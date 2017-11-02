@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta name="Language" content="en" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cab Sharing</title>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/logo.png" />
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="128x128" />
+    <link rel="icon" href="images/logo.png" />
+    <link rel="stylesheet" href="css/normalize.css">
+     <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link href="css/materialicons.css" rel="stylesheet">
+    <style type="text/css">
+        #sidenav-overlay{
+            display: none !important;
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+     (function(){
+      emailjs.init("user_N4tbQO3DhT5HZfYujve5X");
+  })();
+</script>
+<!--  <link rel="stylesheet" type="text/css" href="css/mycss.css"> --><!--common css to all-->
+<link rel="stylesheet" type="text/css" href="css/materialize.clockpicker.css">
+<style type="text/css">
+	body{
+		background-color: #f2f2f2;
+	}
+	.card{
+		padding: 2rem;
+	}
+	#errordisplay{
+		color: red;
+	}
+	#errormessage{
+		color: red;
+	}
+	#successmessage{
+		color: green;
+	}
+	.card{
+		margin:auto;
+	}
+	.half-underline{
+		position: relative;
+	}
+	.half-underline-inline{
+		display: inline-block;
+	}
+	.half-underline:before{
+		content: "";
+		position: absolute;
+		width: 20%;
+		height: 1px;
+		bottom: 0;
+		left: 40%;
+		border-bottom: 2px solid #26a69a;
+	}
+	.post-note{
+		padding: 1rem;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="center half-underline">Book a cab</h1>
+		<p class="center-align">We provide you with the Best, Affordable, and Reliable cab service. Our service is trusted and secured. Just provide your details and we will contact you back. </p>
+		<!-- Modal Trigger -->
+		<a class="waves-effect waves-light btn green modal-trigger" href="#modal1">Price Chart</a>
+
+		<!-- Modal Structure -->
+		<div id="modal1" class="modal">
+			<div class="modal-content">
+				<h4 class="half-underline half-underline-inline">Price Chart</h4>
+				<table class="bordered">
+					<tr>
+					<th>Non AC</th>
+					<th>AC</th>
+					<th>Non AC</th>
+					<th>AC</th>
+					<th>Non AC</th>
+					<th>AC</th>
+				</tr>
+				<tr>
+					<td>Indica / Figo</td>
+					<td>2070</td>
+					<td>2270</td>
+					<td>4099</td>
+					<td>4299</td>
+					<td>2600</td>
+					<td>2900</td>
+				</tr>
+				<tr>
+					<td>Swift Desire / Etios</td>
+					<td>2300</td>
+					<td>2500</td>
+					<td>4400</td>
+					<td>4700</td>
+					<td>2900</td>
+					<td>3300</td>
+				</tr>
+				<tr>
+					<td>Tavera</td>
+					<td>3100</td>
+					<td>3400</td>
+					<td>6099</td>
+					<td>6499</td>
+					<td>3999</td>
+					<td>4199</td>
+				</tr>
+				<tr>
+					<td>Innova</td>
+					<td>3499</td>
+					<td>3799</td>
+					<td>8199</td>
+					<td>8499</td>
+					<td>4599</td>
+					<td>4999</td>
+				</tr>
+				<tr>
+					<td>Traveller</td>
+					<td>4999</td>
+					<td>5299</td>
+					<td>13399</td>
+					<td>13899</td>
+					<td>7999</td>
+					<td>8699</td>
+				</tr>
+
+				</table>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class=" modal-action modal-close waves-effect waves-green btn">OK</a>
+			</div>
+		</div>
+		<h5 class="center-align" id="successmessage"></h5>
+		<h5 class="center-align" id="errormessage"></h5>
+		<div class="containerr">
+			<div class="row card hoverable">
+				<form action="#" method="POST" class="" novalidate>
+					<div class="input-field col s12 m6">
+						<input id="con_name" name="con_name" type="text" class="validate" required value="">
+						<label for="con_name">Contact Name</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<input id="phoneno" type="number" name="phoneno" class="validate" maxlength="13" required value="">
+						<label for="phoneno">Contact Phone number</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<input id="email" type="email" name="email" class="validate" required value="">
+						<label for="email">Contact Email</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<input id="nopeople" type="number" max="50" name="nopeople" class="validate" required>
+						<label for="nopeople">Number of people</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<select class="placeselect travelform-elements" id="from" name="travelfrom" required>
+							<option id="10" value="0" disabled selected >Choose your option</option>
+							<option id="11" value="1">Hyderabad station</option>
+							<option id="12" value="2">Gachibowli</option>
+							<option id="13" value="3">Koti</option>
+							<option id="14" value="4">Hyderabad Airport</option>
+							<option id="15" value="5">Banjara hills</option>
+							<option id="16" value="6">Jubilee hills</option>
+							<option id="17" value="7">Madhapur</option>
+							<option id="18" value="8">Others</option>
+						</select>
+						<label>From:</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<select class="placeselect travelform-elements" id="to" name="travelto" required>
+							<option id="20" value="0" disabled selected>Choose your option</option>
+							<option id="21" value="1">Hyderabad station</option>
+							<option id="22" value="2">Gachibowli</option>
+							<option id="23" value="3">Koti</option>
+							<option id="24" value="4">Hyderabad Airport</option>
+							<option id="15" value="5">Banjara hills</option>
+							<option id="26" value="6">Jubilee hills</option>
+							<option id="27" value="7">Madhapur</option>
+							<option id="28" value="8">Others</option>
+						</select>
+						<label>To:</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<span class="text-light">Date of travel:</span>
+						<input required type="text" class="datepicker travelform-elements" class="validate" placeholder="pick a date.." id="traveldate" name="traveldate" value="">
+						<label for="date"></label>
+					</div>
+					<div class="input-field col s12 m6">
+						<span class="text-light">Time of travel:</span>
+						<input required type="text" id="traveltime" class="timepicker" name="traveltime" >
+						<label for="time"></label>
+					</div>
+					<div class="switch col s12">
+						<label>
+							Non AC
+							<input type="checkbox" id="ac" name="ac" value="1">
+							<span class="lever"></span>
+							AC
+						</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<textarea class="materialize-textarea" id="pickup" name="pickup" class="validate" value=""></textarea>
+						<label for="pickup">Pick up location</label>
+					</div>
+					<div class="input-field col s12 m6">
+						<label for="extra">Any other information?</label>
+						<textarea class="materialize-textarea" id="extra" name="extra" value=""></textarea>
+					</div>
+					<div class="col s12">
+						<h6 id="errordisplay"></h6>
+					</div>
+					<button class="btn waves-effect waves-light right" type="submit" name="submit" onclick="return check_valid()" value="1">Submit<i class="material-icons right">send</i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+
+		<div class="left left-align post-note">
+			<b>Note:</b>We provide you with the Cab Only. If you wish to share your cab with others, kindly <a href="index.php" target="_blank">log in</a> to find co-travellers.
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="js/materialize.clockpicker.js"></script>
+	<script type="text/javascript">
+		$('.datepicker').pickadate({
+			selectMonths: true,
+			selectYears: 2
+		});
+		$('#traveltime').clockpicker({
+			placement: 'bottom',
+			align: 'left',
+			twelvehour: true
+		});
+		$('.datepicker').pickadate();
+		$('select').material_select();
+	</script>
+	<script type="text/javascript">
+		function isempty(data){
+			if (data==0 || data=="" || data==null ||data.length==0)
+				return true;
+			return false;
+		}
+		function check_valid(){
+			var error="";
+			var con_name=$("#con_name").val();
+			var nopeople=$("#nopeople").val();
+			var travelfrom=$("#from").val();
+			var travelto=$("#to").val();
+			var traveldate=$("#traveldate").val();
+			var traveltime=$("#traveltime").val();
+			var email=$("#email").val();
+			var phoneno=$("#phoneno").val();
+			if(isempty(con_name))
+			{
+				error="Contact Name can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(phoneno))
+			{
+				error="phone can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(phoneno.length<10 || phoneno.length>13)
+			{
+				error="Please Enter correct Mobile no";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(email))
+			{
+				error="Email can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(nopeople))
+			{
+				error="No. of people can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(travelfrom))
+			{
+				error="Travel from can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(travelto))
+			{
+				error="Travel to can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(traveldate))
+			{
+				error="Travel date can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(traveltime))
+			{
+				error="Travel time can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+		}
+		$(document).ready(function(){
+
+			$('.modal').modal();
+		});
+</script>
+
+
+<script>
+// Initialize collapse button
+$(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+
+
+
+  $('.button-collapse').sideNav({
+      menuWidth: 260, // Default is 240
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+  }
+  );
+</script>
+<script>
+	$(document).ready(function() {
+		Materialize.updateTextFields();
+	});
+	$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+});
+</script>
+<script>
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+	$(document).ready(function() {  
+		$(document).on('change','#from',function(){
+			var i=$(this).val();
+			i=2+i;
+			var j;
+			for(j=20;j<=28;j++)
+				$("#"+j).removeAttr("disabled");
+			if(i!=20)
+				$("#"+i).attr("disabled","true");
+			$('select').material_select();
+		});
+	});
+	
+	$(document).ready(function() {  
+		$(document).on('change','#to',function(){
+			var i=$(this).val();
+			i=1+i;
+			var j;
+			for(j=10;j<=18;j++)
+				$("#"+j).removeAttr("disabled");
+			if(i!=10)
+				$("#"+i).attr("disabled","true");
+			$('select').material_select();
+		});
+	});
+	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2 // Creates a dropdown of 15 years to control year
+});
+</script>
+<script type="text/javascript">
+	function closenav(){
+		$('.button-collapse').sideNav('hide');
+	}
+
+	$(".close-button-nav").click(function(){
+		closenav();
+	});
+</script>
+</body>
+</html>
