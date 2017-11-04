@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="Language" content="en" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>wHere</title>
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link href="css/materialicons.css" rel="stylesheet">
+    
+<link rel="stylesheet" type="text/css" href="css/materialize.clockpicker.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+	<div>
+		  <ul id="slide-out" class="side-nav fixed">
+  <div class="hide-on-large-only closebuttonnav">
+    <a href="#" class="close-button-nav"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+  </div>  
+  <li>
+    <div class="userView">
+     <img class="nav-background" src="https://media.giphy.com/media/EWkskugBSvdRK/giphy.gif">
+
+     <div class="center-align"><img class="circle nav-profile-pic" src="https://media.giphy.com/media/EWkskugBSvdRK/giphy.gif"></div>
+     <a href="editdetails.php" class="details center-align"><span class="red-text name"><h4>wHere</h4></span></a>
+
+   </div>
+ </li>
+ <li class="active waves-effect"><a href="editdetails.php"><i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;Edit Travel Details</a></li>
+ <li class="waves-effect"><a href="requests.php"><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;Requests </a></li>
+ <li class="waves-effect"><a href="samedate.php"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;Same Date Travellers</a></li>
+   <li class="waves-effect"><a href="showall.php"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Show All</a></li>
+   <li class="waves-effect"><a href="bookmycab.php"><i class="fa fa-taxi" aria-hidden="true"></i> &nbsp;Book a cab</a></li>
+   <li><div class="divider"></div></li>
+       <li class="waves-effect"><a href="bookcab.php"><i class="fa fa-taxi" aria-hidden="true"></i> &nbsp;Show Book Cabs</a></li>
+    <li class="waves-effect"><a href="deletedate.php"><i class="fa fa-taxi" aria-hidden="true"></i> &nbsp;Delete date</a></li>
+  <li class="waves-effect"><a href="logout.php" onclick="return confirm('Are you sure you want to logout?')"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Logout</a></li>
+</ul>
+<div class="hide-on-large-only">
+ <nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo right"> <img class="navlogo-mobile" src="images/logo_black_org.png"></a>
+    <ul id="nav-mobile" class="">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    </ul>
+  </div>
+</nav>
+
+</div>
+		<main>
+			<h4>Edit your details:</h4>
+			<div class="container">
+				<h5 class="form-error" id="errordisplay"></h5>
+				<h5 class="form-success"></h5>
+				<form action="editdetails.php" method="POST">
+					<h5>Travel details:</h5>
+					<div class="row">
+						<div class="input-field col s12 m6">
+							<select class="placeselect" id="from" name="travelfrom">
+								<option id="10" value="0" >Choose your option</option>
+                                                        <option id="11" value="1" selected >Hyderabad station</option>
+							<option id="12" value="2">Gachibowli</option>
+							<option id="13" value="3">Koti</option>
+							<option id="14" value="4">Hyderabad Airport</option>
+							<option id="15" value="5">Banjara hills</option>
+							<option id="16" value="6">Jubilee hills</option>
+							<option id="17" value="7">Madhapur</option>
+							<option id="18" value="8">Others</option>
+							</select>
+							<label>From:</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<select class="placeselect" id="to" name="travelto">
+								<option id="20" value="0" >Choose your option</option>
+                                                         <option id="21" value="1">Hyderabad station</option>
+							<option id="22" value="2" selected>Gachibowli</option>
+							<option id="23" value="3">Koti</option>
+							<option id="24" value="4">Hyderabad Airport</option>
+							<option id="15" value="5">Banjara hills</option>
+							<option id="26" value="6">Jubilee hills</option>
+							<option id="27" value="7">Madhapur</option>
+							<option id="28" value="8">Others</option>
+							</select>
+							<label>To:</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<span class="text-light">Date of travel:</span>
+							<input type="text" class="datepicker" class="validate" placeholder="pick a date.." id="traveldate" name="traveldate" value='11 Nov, 2017' >
+							<label for="date"></label>
+						</div>
+						<div class="input-field col s12 m6">
+							<span class="text-light">Time of travel:</span>
+							<input type="text" id="traveltime" class="timepicker" name="traveltime" value='05:00PM' >
+							<label for="time"></label>
+						</div>
+						<div class="col s12">
+							<a class="waves-effect waves-light btn" id="reset"><i class="fa fa-trash-o" aria-hidden="true"></i> reset</a>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col s12">
+							Show my last name(<span class="text-light">Full Name</span>) to others&nbsp;
+
+							<br class="hide-on-med-and-up">
+							<span class="switch">
+								<label>
+									No
+									<input type="checkbox" name="seelname" id="seelname" value="1"  >
+									<span class="lever"></span>
+									Yes
+								</label>
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<i class="material-icons prefix">email</i>
+							<input disabled title="you cannot change your email id !" name="email" id="email" type="email" class="validate" data-error="wrongemail" data-success="" value='abc.def@students.iiit.ac.in' >
+							<labeL for="email">Email</labeL>
+						</div>
+						<div class="col s12">
+							Show my email to others&nbsp;
+							<span class="switch">
+								<label>
+									No
+									<input type="checkbox" name="seeemail" value="1" id="seeemail" checked >
+									<span class="lever"></span>
+									Yes
+								</label>
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<i class="material-icons prefix">phone</i>
+							<input disabled name="phoneno" id="phoneno" type="number" title="You cannot change your phone no !" length="13" value='9876543210'>
+							<labeL for="phoneno">Mobile no</labeL>
+						</div>
+						<div class="col s12">
+							Show my phone no. to others&nbsp;
+							<span class="switch">
+								<label>
+									No
+									<input type="checkbox" name="seephoneno" id="seephoneno" value="1"  checked >
+									<span class="lever"></span>
+									Yes
+								</label>
+							</span>
+						</div>
+					</div>
+					<br>
+					<button class="btn waves-effect waves-light right" type="submit" name="editdetailssubmit" onclick="return check_valid()" value="1">Save changes<i class="material-icons right">send</i>
+					</button>
+				</form>
+				<br><br><br><br>
+			</div>
+
+		</div>
+	</main>
+	<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="js/materialize.clockpicker.js"></script>
+	<script type="text/javascript">
+		$('#traveltime').clockpicker({
+			placement: 'bottom',
+			align: 'left',
+			twelvehour: true
+		});
+	</script>
+	<script type="text/javascript">
+		$("#reset").click(function(){
+			$("#10").removeAttr("selected");
+			$("#11").removeAttr("selected");
+			$("#12").removeAttr("selected");
+			$("#13").removeAttr("selected");
+			$("#14").removeAttr("selected");
+			$("#15").removeAttr("selected");
+			$("#16").removeAttr("selected");
+			$("#17").removeAttr("selected");
+			$("#18").removeAttr("selected");
+			$("#10").attr("selected","selected");
+
+			$("#20").removeAttr("selected");
+			$("#21").removeAttr("selected");
+			$("#22").removeAttr("selected");
+			$("#23").removeAttr("selected");
+			$("#24").removeAttr("selected");
+			$("#25").removeAttr("selected");
+			$("#26").removeAttr("selected");
+			$("#27").removeAttr("selected");
+			$("#28").removeAttr("selected");
+			$("#20").attr("selected","selected");
+			$('select').material_select();
+
+			$("#traveldate").val("");
+			$("#traveltime").val("");
+			$("#flightno").val("");
+		});
+	</script>
+	<script type="text/javascript">
+		function isempty(data){
+			if (data==0 || data=="" || data==null ||data.length==0)
+				return true;
+			return false;
+		}
+		function check_valid(){
+			return true;
+			var error="";
+			var travelfrom=$("#from").val();
+			var travelto=$("#to").val();
+			var traveldate=$("#traveldate").val();
+			var traveltime=$("#traveltime").val();
+			var flightno=$("#flightno").val();
+			var email=$("#email").val();
+			var phoneno=$("#phoneno").val();
+			if(isempty(travelfrom))
+			{
+				error="Travel from can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(travelto))
+			{
+				error="Travel to can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(traveldate))
+			{
+				error="Travel date can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(traveltime))
+			{
+				error="Travel time can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(email))
+			{
+				error="Email can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(isempty(phoneno))
+			{
+				error="phone can't be empty";
+				$("#errordisplay").text(error);
+				return false;
+			}
+			if(phoneno.length<10 || phoneno.length>13)
+			{
+				error="Please Enter correct Mobile no";
+				$("#errordisplay").text(error);
+				return false;
+			}
+		}
+	</script>
+
+</div>
+
+<script>
+// Initialize collapse button
+$(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+
+
+
+  $('.button-collapse').sideNav({
+      menuWidth: 260, // Default is 240
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+  }
+  );
+</script>
+<script>
+	$(document).ready(function() {
+		Materialize.updateTextFields();
+	});
+	$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+});
+</script>
+<script>
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+	$(document).ready(function() {  
+		$(document).on('change','#from',function(){
+			var i=$(this).val();
+			i=2+i;
+			var j;
+			for(j=20;j<=28;j++)
+				$("#"+j).removeAttr("disabled");
+			if(i!=20)
+				$("#"+i).attr("disabled","true");
+			$('select').material_select();
+		});
+	});
+	
+	$(document).ready(function() {  
+		$(document).on('change','#to',function(){
+			var i=$(this).val();
+			i=1+i;
+			var j;
+			for(j=10;j<=18;j++)
+				$("#"+j).removeAttr("disabled");
+			if(i!=10)
+				$("#"+i).attr("disabled","true");
+			$('select').material_select();
+		});
+	});
+	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2 // Creates a dropdown of 15 years to control year
+});
+</script>
+<script type="text/javascript">
+	function closenav(){
+		$('.button-collapse').sideNav('hide');
+	}
+
+	$(".close-button-nav").click(function(){
+		closenav();
+	});
+</script>
+</body>
+</html>
